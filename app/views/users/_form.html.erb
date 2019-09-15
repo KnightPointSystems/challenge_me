@@ -21,6 +21,11 @@
     <%= form.text_field :email, id: :user_email %>
   </div>
 
+  <div class="field">
+    <%= form.label :time_zone %>
+    <%= form.time_zone_select :time_zone, nil, include_blank: true %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

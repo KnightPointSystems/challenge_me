@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong>Time zone:</strong>
+  <%= @user.time_zone %>
+</p>
+
+<p>
   <strong>Task Schedules</strong>
 <table>
   <thead>
@@ -25,7 +30,9 @@
   </th>
   </thead>
   <tbody>
-  <%= render @task_schedules %>
+  <%= render partial:    'task_schedules/task_schedule',
+             collection: @user.task_schedules.order(:due_date),
+             locals:     {time_zone: @user.time_zone} %>
   </tbody>
 </table>
 </p>
@@ -45,7 +52,9 @@
   </th>
   </thead>
   <tbody>
-  <%= render @tasks %>
+  <%= render partial:    'tasks/task',
+             collection: @user.tasks.order(:due_date),
+             locals:     {time_zone: @user.time_zone} %>
   </tbody>
 </table>
 </p>

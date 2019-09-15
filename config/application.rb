@@ -27,5 +27,9 @@ module ChallengeMe
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Set the queueing backend adapter here. Check https://api.rubyonrails.org/classes/ActiveJob/QueueAdapters.html
+    # for the adapters Active Job provides
+    # config.active_job.queue_adapter = :sidekiq
   end
 end

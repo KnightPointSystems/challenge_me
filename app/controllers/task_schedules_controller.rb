@@ -4,7 +4,7 @@ class TaskSchedulesController < ApplicationController
   # GET /task_schedules
   # GET /task_schedules.json
   def index
-    @task_schedules = TaskSchedule.all
+    @task_schedules = TaskSchedule.order(:due_date)
   end
 
   # GET /task_schedules/1

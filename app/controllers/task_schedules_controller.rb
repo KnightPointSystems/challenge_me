@@ -1,5 +1,5 @@
 class TaskSchedulesController < ApplicationController
-  before_action :set_task_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :set_task_schedule, only: [:show, :edit, :update, :complete, :destroy]
 
   # GET /task_schedules
   # GET /task_schedules.json
@@ -48,6 +48,18 @@ class TaskSchedulesController < ApplicationController
         format.html { render :edit }
         format.json { render json: @task_schedule.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  # PATCH /task_schedules/1
+  # PATCH /task_schedules/1.json
+  def complete
+    if TaskSchedule::Complete.new(@task_schedule).perform
+      redirect_to @task_schedule.user, notice: 'Task schedule was successfully completed.'
+    else
+      flash.now[:notice] = 'Could not complete the task schedule'
+      @user = @task_schedule.user
+      render 'users/show'
     end
   end
 

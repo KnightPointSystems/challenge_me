@@ -17,7 +17,7 @@
       <tr>
         <td><%= task_schedule.name %></td>
         <td><%= task_schedule.due_date %></td>
-        <td><%= task_schedule.user %></td>
+        <td><%= task_schedule.user.name %></td>
         <td><%= link_to 'Show', task_schedule %></td>
         <td><%= link_to 'Edit', edit_task_schedule_path(task_schedule) %></td>
         <td><%= link_to 'Destroy', task_schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>

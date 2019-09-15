@@ -5,4 +5,7 @@
   <td>
     <%= task_schedule.due_date %>
   </td>
+  <td>
+    <%= button_to 'Complete', complete_task_schedule_path(task_schedule), method: :patch %>
+  </td>
 </tr>

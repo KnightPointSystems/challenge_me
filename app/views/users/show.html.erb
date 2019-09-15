@@ -12,39 +12,42 @@
 
 <p>
   <strong>Task Schedules</strong>
-  <table>
-      <thead>
-        <th>
-          Name
-        </th>
-        <th>
-          Due Date
-        </th>
-      </thead>
-      <tbody>
-          <%= render @user.task_schedules %>
-      </tbody>
-  </table>
+<table>
+  <thead>
+  <th>
+    Name
+  </th>
+  <th>
+    Due Date
+  </th>
+  <th>
+    &nbsp;
+  </th>
+  </thead>
+  <tbody>
+  <%= render @user.task_schedules %>
+  </tbody>
+</table>
 </p>
 
 <p>
   <strong>Tasks</strong>
-  <table>
-      <thead>
-        <th>
-          Name
-        </th>
-        <th>
-          Complete
-        </th>
-        <th>
-          Due Date
-        </th>
-      </thead>
-      <tbody>
-          <%= render @user.tasks %>
-      </tbody>
-  </table>
+<table>
+  <thead>
+  <th>
+    Name
+  </th>
+  <th>
+    Complete
+  </th>
+  <th>
+    Due Date
+  </th>
+  </thead>
+  <tbody>
+  <%= render @user.tasks %>
+  </tbody>
+</table>
 </p>
 
 

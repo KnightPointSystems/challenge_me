@@ -12,6 +12,19 @@ class UsersController < ApplicationController
   def show
     @task_schedules = @user.task_schedules.order(:due_date)
     @tasks          = @user.tasks.order(:due_date)
+
+    if params[:view] == 'today'
+      # Use Time.now.utc so that if @user.time_zone is nil, it defaults to the current UTC time
+      cur_local_time = Time.now.utc.in_time_zone(@user.time_zone)
+      # To the local user, due date being "today" means that the due date time is between 00:00:00 and 23:59:59 of
+      # the current day in local time, hence the use of the methods #beginning_of_day and #end_of_day. Then,
+      # we need to convert the two to UTC times since the "due_date" column in the database tables are in UTC time
+      cur_utc_beginning_of_day_time = cur_local_time.beginning_of_day.utc
+      cur_utc_end_of_day_time       = cur_local_time.end_of_day.utc
+
+      @task_schedules = @task_schedules.due_between(cur_utc_beginning_of_day_time, cur_utc_end_of_day_time)
+      @tasks          = @tasks.due_between(cur_utc_beginning_of_day_time, cur_utc_end_of_day_time)
+    end
   end
 
   # GET /users/new

@@ -14,7 +14,8 @@
   <strong>Time zone:</strong>
   <%= @user.time_zone %>
 </p>
-
+<hr/>
+Filter: <%= link_to 'All', user_path(@user, view: :all) %> | <%= link_to 'Today', user_path(@user, view: :today) %>
 <p>
   <strong>Task Schedules</strong>
 <table>
@@ -31,7 +32,7 @@
   </thead>
   <tbody>
   <%= render partial:    'task_schedules/task_schedule',
-             collection: @user.task_schedules.order(:due_date),
+             collection: @task_schedules,
              locals:     {time_zone: @user.time_zone} %>
   </tbody>
 </table>
@@ -53,7 +54,7 @@
   </thead>
   <tbody>
   <%= render partial:    'tasks/task',
-             collection: @user.tasks.order(:due_date),
+             collection: @tasks,
              locals:     {time_zone: @user.time_zone} %>
   </tbody>
 </table>
